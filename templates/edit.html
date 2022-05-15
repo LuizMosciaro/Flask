@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+
+{% block head %}
+<title>Posts</title>
+{% endblock %}
+
+
+{% block body %}
+<h1>Edição de Posts</h1>
+
+    <hr> <!-- hr == linha horizontal no html -->
+    <h2> Editando o post do blog: </h2> <!-- h2 == cabeçalho 2-->
+    <form action="/posts/editar/{{ post.id }}" method="POST"> <!-- é um formulario -->
+        Titulo:<input type="text" name='title' id="title" value="{{ post.title }}"> <!--formulario 1 -->
+        <br> <!-- é uma quebra de linha -->
+        Post :     <input type="text" name="content" id="content" value="{{ post.content }}"> <!--formulario 2 -->
+        <br> 
+        Autor:<input type="text" name="author" id="author" value="{{ post.author }}">
+        <br>
+        <input  type="submit" value="Salvar Alterações"> <!--botao de envio -->
+        
+    </form>
+    <hr>
+
+{% endblock %}
+

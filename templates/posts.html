@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Posts</title>
+{% endblock %}
+
+
+
+{% block body %}
+<h1>Todos Posts</h1>
+
+<hr> <!-- hr == linha horizontal no html -->
+<h2> Fazer um novo post no blog: </h2> <!-- h2 == cabeçalho 2-->
+<form action="/posts" method="POST">
+    <!-- é um formulario -->
+    Titulo:<input type="text" name='title' id="title" class="form-control" aria-label="Large"
+        aria-describedby="inputGroup-sizing-default">
+    <!--formulario 1 -->
+    <br> <!-- é uma quebra de linha -->
+    Post:<input type="text" name="content" id="content" class="form-control" aria-label="Large"
+        aria-describedby="inputGroup-sizing-default">
+    <!--formulario 2 -->
+    <br>
+    Autor:<input type="text" name="author" id="author" class="form-control" aria-label="Large"
+        aria-describedby="inputGroup-sizing-default">
+    <br>
+    <input class="btn btn-success" type="submit" value="Enviar">
+    <!--botao de envio -->
+
+</form>
+<hr>
+
+
+{% for post in posts %}
+<!--'posts' é o parametro colocado na função ',posts=todos_posts'-->
+<!--post.title com chaves dupla vai printar o valor da chave 'title' -->
+<h2>{{ post.title }}</h2>
+
+{% if post.author %}
+<!--Assim que chama o 'if', igual o python-->
+<small>Por: {{ post.author }} em {{ post.date_posted }}</small>
+{% else %}
+<small>Por: Autor Desconhido em {{ post.date_posted }}</small>
+{%endif%}
+<!-- Tem que fechar com esse bloco, se não da erro-->
+
+<p>{{ post.content }}</p>
+<!--The <p> tag defines a paragraph. Browsers automatically add a single blank line before and after each <p> element-->
+<a class="btn btn-info" href='/posts/delete/{{ post.id }}'>Deletar</a>
+<!--The <a> tag defines a hyperlink, which is used to link from one page to another.-->
+<a class="btn btn-dark" href='/posts/editar/{{ post.id }}'>Editar</a>
+<hr> <!-- hr == linha horizontal no html -->
+
+
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+<!-- Isso vai chamar o bloco do arquivo base.html-->
+
+{% block head %}
+<title>Home</title>
+{% endblock %}
+
+{% block body %}
+
+<br>
+<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <hr>
+    <div class="col-md-6 px-0">
+        <h1 class="display-4 fst-italic">Titulo do meu site</h1>
+        <p class="lead my-3">Multiplas linhas de texto que utilizam-se de recursos tecnológicos para
+            se sobrair no mercado de webdesign </p>
+        <p class="lead mb-0"><a href="/posts" class="text-white fw-bold">Ir para página de post's...</a></p>
+    </div>
+</div>
+
+
+{% endblock %}
